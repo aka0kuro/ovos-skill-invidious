@@ -1,21 +1,24 @@
 {
     "authorname": "OpenVoiceOS",
-    "foldername": "skill-ovos-youtube",
-    "url": "https://github.com/OpenVoiceOS/skill-ovos-youtube",
+    "foldername": "skill-ovos-invidious",
+    "url": "https://github.com/aka0kuro/ovos-skill-invidious",
     "branch": "dev",
     "license": "apache-2.0",
     "tags": [
         "Entertainment",
-        "permissive-license"
+        "permissive-license",
+        "privacy",
+        "youtube-alternative"
     ],
-    "short_description": "simple youtube skill for better-cps",
+    "short_description": "simple invidious skill for better-cps",
     "last_updated": "2024-05-24T23:51:26Z",
-    "icon": "https://github.com/OpenVoiceOS/skill-ovos-youtube/ui/ytube.jpg",
-    "skillname": "Simple Youtube Skill",
-    "description": "search youtube by voice!\n\nthis skill can be configured as a fallback matcher for play queries, you can set `self.settings[\"fallback_mode\"] = True`\nand returned results will have lower confidence, other skills should take precedence most of the time\n\nbuilt on top of [youtube_searcher](https://github.com/HelloChatterbox/youtube_searcher)\n\n![](./gui.png)\n![](./gui2.png)",
+    "icon": "https://github.com/OpenVoiceOS/skill-ovos-invidious/ui/invidious.jpg",
+    "skillname": "Simple Invidious Skill",
+    "description": "search youtube videos through invidious by voice!\n\nthis skill can be configured as a fallback matcher for play queries, you can set `self.settings[\"fallback_mode\"] = True`\nand returned results will have lower confidence, other skills should take precedence most of the time\n\nbuilt on top of [invidious api](https://github.com/iv-org/invidious)\n\n![](./gui.png)\n![](./gui2.png)",
     "examples": [],
     "credits": [
-        "JarbasAl"
+        "JarbasAl",
+        "iv-org"
     ],
     "category": "Entertainment",
     "categories": [
@@ -23,10 +26,9 @@
     ],
     "requirements": {
         "python": [
-            "youtube_searcher>=0.1.6",
             "ovos_workshop~=0.0, >=0.0.11a4",
-            "tutubo>=0.0.2a1",
-            "ovos-utils~=0.0, >=0.1.0a18"
+            "ovos-utils~=0.0, >=0.1.0a18",
+            "requests"
         ],
         "skill": [],
         "system": {}
@@ -41,8 +43,8 @@
                         "name": "invidious_instance",
                         "type": "text",
                         "label": "Invidious Instance URL",
-                                    "value": "https://inv.nadeko.net",
-            "placeholder": "https://inv.nadeko.net"
+                        "value": "https://inv.nadeko.net",
+                        "placeholder": "https://inv.nadeko.net"
                     },
                     {
                         "name": "max_results",

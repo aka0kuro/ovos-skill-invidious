@@ -5,7 +5,7 @@ from os.path import join, dirname
 
 from setuptools import setup
 
-URL = "https://github.com/OpenVoiceOS/skill-ovos-invidious"
+URL = "https://github.com/aka0kuro/ovos-skill-invidious"
 SKILL_CLAZZ = "SimpleInvidiousSkill"  # needs to match __init__.py class name
 PYPI_NAME = "skill-simple-invidious"  # pip install PYPI_NAME
 
@@ -77,8 +77,8 @@ setup(
     description='ovos common play invidious skill plugin',
     long_description=long_description,
     url=URL,
-    author='JarbasAi',
-    author_email='jarbasai@mailfence.com',
+    author='aka0kuro',
+    author_email='aka.kuro@disroot.org',
     license='Apache-2.0',
     package_dir={SKILL_PKG: ""},
     package_data={SKILL_PKG: find_resource_files()},
