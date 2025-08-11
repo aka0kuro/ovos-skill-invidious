@@ -1,0 +1,60 @@
+{
+  "invidious_instances": [
+    "https://invidious.projectsegfau.org",
+    "https://invidious.slipfox.xyz",
+    "https://invidious.prvcy.projectsegfau.org",
+    "https://inv.nadeko.net",
+    "https://invidious.snopyta.org",
+    "https://invidious.kavin.rocks",
+    "https://invidious.weblibre.org",
+    "https://invidious.prvcy.projectsegfau.org",
+    "https://invidious.nerdvpn.de",
+    "https://invidious.sethforprivacy.com"
+  ],
+  "search_settings": {
+    "default_type": "video",
+    "default_sort": "relevance",
+    "default_duration": "all",
+    "default_region": "US",
+    "max_results": 20,
+    "language": "en-US"
+  },
+  "featured_queries": [
+    "zz top",
+    "ai covers", 
+    "frank sinatra",
+    "tutorial python",
+    "cooking recipes",
+    "music covers",
+    "spanish music",
+    "flamenco",
+    "tutorials in english",
+    "documentaries in english"
+  ],
+  "localization": {
+    "default_language": "en-US",
+    "supported_languages": ["en-US", "es-ES", "de-DE", "it-IT"],
+    "music_queries": [
+      "spanish music",
+      "flamenco",
+      "sevillanas",
+      "rumba",
+      "coplas",
+      "zarzuela"
+    ]
+  },
+  "instance_management": {
+    "auto_discovery": true,
+    "discovery_url": "https://redirect.invidious.io/",
+    "max_instances": 15,
+    "fallback_to_config": true,
+    "health_check_timeout": 5,
+    "custom_instances": [
+      "https://invidious.snopyta.org",
+      "https://invidious.kavin.rocks",
+      "https://invidious.weblibre.org",
+      "https://invidious.nerdvpn.de",
+      "https://invidious.sethforprivacy.com"
+    ]
+  }
+} 

@@ -1,0 +1,48 @@
+{
+  "name": "Invidious Skill",
+  "skillname": "skill-invidious",
+  "authorname": "aka0kuro",
+  "foldername": "",
+  "url": "https://github.com/aka0kuro/skill-invidious",
+  "branch": "dev",
+  "desktopFile": false,
+  "warning": "",
+  "systemDeps": false,
+  "platforms": [
+    "arm",
+    "arm64",
+    "i386",
+    "x86_64",
+    "ia64"
+  ],
+  "examples": [
+    "play António Variações",
+    "search for music videos",
+    "find tutorial videos",
+    "search invidious for cooking recipes",
+    "play latest music",
+    "find educational content",
+    "play spanish music",
+    "search for tutorials in english",
+    "find cooking recipes",
+    "play flamenco",
+    "play sevillanas",
+    "search for documentaries in english"
+  ],
+  "tags": [
+    "invidious",
+    "youtube alternative",
+    "video search",
+    "music",
+    "privacy",
+    "common play",
+    "english",
+    "localization"
+  ],
+  "languages": [
+    "en-US",
+    "es-ES",
+    "de-DE",
+    "it-IT"
+  ]
+}
