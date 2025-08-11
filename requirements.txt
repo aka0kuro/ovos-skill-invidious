@@ -1,5 +1,4 @@
 ovos-utils >= 0.1.0
 ovos-bus-client>=0.0.9
 ovos-workshop>=0.0.16,<8.0.0
-invidious-api>=0.1.0
 requests>=2.25.0

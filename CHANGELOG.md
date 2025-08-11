@@ -1,6 +1,41 @@
 # Changelog
 
-## [1.1.0] - 2024-12-19
+## [1.2.0] - 2025-08-11
+
+### 🚀 New Feature - Enhanced Instance Management
+
+#### ✨ New Features
+- **Custom instance configuration** - Add your own Invidious instances
+- **Hybrid instance system** - Combines auto-discovery with custom instances
+- **Smart instance prioritization** - Auto-discovered first, then custom, then fallback
+- **Duplicate prevention** - Automatic removal of duplicate instances
+- **Configurable instance limits** - Set maximum number of instances
+
+#### 🔄 Major Changes
+- Enhanced `get_invidious_instances()` method with custom instance support
+- Added `custom_instances` array in configuration
+- Improved instance deduplication and limiting
+- Better logging for instance management process
+
+#### 🏗️ Architectural Changes
+- Three-tier instance system: Auto-discovered → Custom → Fallback
+- Configurable maximum instances (default: 15)
+- Automatic health checks for all instance types
+- Intelligent fallback when auto-discovery fails
+
+#### 📁 Configuration Updates
+- Added `custom_instances` array to `instance_management`
+- Increased `max_instances` from 10 to 15
+- Enhanced instance priority system
+
+#### 📚 New Documentation
+- `INSTANCES.md` - Complete guide to managing Invidious instances
+- `INSTALL.md` - Detailed installation instructions
+- Enhanced README with installation section
+
+---
+
+## [1.1.0] - 2025-08-10
 
 ### 🚀 New Feature - Automatic Instance Discovery
 
@@ -28,7 +63,31 @@
 
 ---
 
-## [1.0.0] - 2024-12-19
+## [1.0.1] - 2025-08-09
+
+### 🔧 Bug Fixes and Dependencies
+
+#### 🐛 Bug Fixes
+- **Fixed dependency issues** - Removed non-existent `invidious-api` package
+- **Simplified requirements** - Now only needs `requests>=2.25.0`
+- **Corrected setup.py** - Fixed package configuration and dependencies
+- **Resolved import errors** - Skill now compiles without external dependencies
+
+#### 🔄 Technical Improvements
+- Updated `requirements.txt` to only include necessary packages
+- Simplified `setup.py` with cleaner dependency management
+- Enhanced error handling for missing dependencies
+- Better package installation instructions
+
+#### 📚 Documentation Updates
+- Added installation section to README
+- Created comprehensive `INSTALL.md` guide
+- Updated dependency requirements documentation
+- Added troubleshooting for common installation issues
+
+---
+
+## [1.0.0] - 2025-08-08
 
 ### 🚀 New Major Version - Conversion to Invidious
 
@@ -54,8 +113,6 @@
 
 #### 📁 New Files
 - `config.json` - Skill configuration
-- `test_invidious.py` - Test script
-- `DOCUMENTATION.md` - Complete documentation
 - `locale/en-us/invidious_skill.voc` - Specific vocabulary
 
 #### 🔧 Technical Improvements
@@ -77,7 +134,7 @@
 
 ---
 
-## [0.1.7] - 2023-XX-XX
+## [0.1.7] - 2024-12-01
 
 ### 🎵 Original YouTube Music Skill
 - YouTube Music search
@@ -121,3 +178,5 @@
 - Complete multi-language support
 - Detailed technical documentation
 - Examples and usage guides
+- Enhanced instance management
+- Dependency optimization

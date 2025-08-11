@@ -4,16 +4,16 @@ from os.path import dirname, join
 
 from setuptools import setup
 import os
+import json
 
 URL = "https://github.com/aka0kuro/skill-invidious"
 SKILL_CLAZZ = "InvidiousSkill"  # needs to match __init__.py class name
 PYPI_NAME = "skill-invidious"  # pip install PYPI_NAME
 
 # below derived from github url to ensure standard skill_id
-SKILL_AUTHOR, SKILL_NAME = URL.split(".com/")[-1].split("/")
-SKILL_PKG = SKILL_NAME.lower().replace('-', '_')
-PLUGIN_ENTRY_POINT = f'{SKILL_NAME.lower()}.{SKILL_AUTHOR.lower()}={SKILL_PKG}:{SKILL_CLAZZ}'
-
+SKILL_AUTH, SKILL_BRANCH = URL.split(".com/")[-1].split("/")
+SKILL_ID = f"{SKILL_AUTH}-{SKILL_BRANCH}-{PYPI_NAME}"
+PLUGIN_ENTRY_POINT = f"{SKILL_ID} = {SKILL_CLAZZ}"
 
 # skill_id=package_name:SkillClass
 
@@ -32,56 +32,51 @@ def find_resource_files():
     return package_data
 
 
-def get_version():
-    """ Find the version of this skill"""
-    version_file = join(dirname(__file__), 'version.py')
-    major, minor, build, alpha = (None, None, None, None)
-    with open(version_file) as f:
+# Function to parse requirements.txt
+def parse_requirements(filename):
+    with open(filename, 'r') as f:
+        requirements = []
         for line in f:
-            if 'VERSION_MAJOR' in line:
-                major = line.split('=')[1].strip()
-            elif 'VERSION_MINOR' in line:
-                minor = line.split('=')[1].strip()
-            elif 'VERSION_BUILD' in line:
-                build = line.split('=')[1].strip()
-            elif 'VERSION_ALPHA' in line:
-                alpha = line.split('=')[1].strip()
+            line = line.strip()
+            if line and not line.startswith('#'):
+                requirements.append(line)
+        return requirements
 
-            if ((major and minor and build and alpha) or
-                    '# END_VERSION_BLOCK' in line):
-                break
-    version = f"{major}.{minor}.{build}"
-    if int(alpha):
-        version += f"a{alpha}"
-    return version
+# Function to recursively find package files
+def package_files(directory):
+    paths = []
+    for (path, directories, filenames) in walk(directory):
+        for filename in filenames:
+            paths.append(('..', path, filename))
+    return paths
 
+# Function to get version from version.py
+def get_version():
+    version_dict = {}
+    with open("version.py", "r") as f:
+        exec(f.read(), version_dict)
+    return version_dict.get("VERSION_MAJOR", 0), version_dict.get("VERSION_MINOR", 0), version_dict.get("VERSION_BUILD", 0)
 
-def get_requirements(requirements_filename: str):
-    requirements_file = path.join(path.abspath(path.dirname(__file__)),
-                                  requirements_filename)
-    with open(requirements_file, 'r', encoding='utf-8') as r:
-        requirements = r.readlines()
-    requirements = [r.strip() for r in requirements if r.strip()
-                    and not r.strip().startswith("#")]
-    if 'MYCROFT_LOOSE_REQUIREMENTS' in os.environ:
-        print('USING LOOSE REQUIREMENTS!')
-        requirements = [r.replace('==', '>=').replace('~=', '>=') for r in requirements]
-    return requirements
-
+VERSION_MAJOR, VERSION_MINOR, VERSION_BUILD = get_version()
+VERSION = f"{VERSION_MAJOR}.{VERSION_MINOR}.{VERSION_BUILD}"
 
 setup(
     name=PYPI_NAME,
-    version=get_version(),
+    version=VERSION,
     url=URL,
-    package_dir={SKILL_PKG: ""},
-    package_data={SKILL_PKG: find_resource_files()},
-    packages=[SKILL_PKG],
+    package_dir={PYPI_NAME: ''},
+    package_data={PYPI_NAME: ['locale/*', 'res/*']},
+    packages=[PYPI_NAME],
     description='ovos common play invidious skill plugin by aka0kuro',
     author='aka0kuro',
     author_email='',
     license='Apache-2.0',
     include_package_data=True,
-    install_requires=get_requirements("requirements.txt"),
+    install_requires=parse_requirements('requirements.txt'),
     keywords='ovos skill plugin invidious youtube alternative aka0kuro',
-    entry_points={'ovos.plugin.skill': PLUGIN_ENTRY_POINT}
+    entry_points={
+        'ovos.plugin.skill': [
+            PLUGIN_ENTRY_POINT
+        ]
+    }
 )

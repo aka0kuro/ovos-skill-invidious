@@ -6,6 +6,16 @@ Invidious OCP Skill - Private Alternative to YouTube
 
 Search videos on Invidious by voice! Invidious is a private and alternative frontend to YouTube that doesn't require cookies or JavaScript.
 
+## Installation
+
+
+### Manual Installation
+
+1. Clone this repository
+2. Install dependencies: `pip install -r requirements.txt`
+3. Copy to your OVOS skills directory
+4. Restart OVOS
+
 ## Features
 
 - **Automatic instance discovery** from [redirect.invidious.io](https://redirect.invidious.io/)
